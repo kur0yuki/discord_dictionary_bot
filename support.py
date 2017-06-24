@@ -1,7 +1,11 @@
 import logging
 import requests
+import re
 from bs4 import BeautifulSoup
 
+conf = open('config', 'r').readline()
+token = re.search('token=\'(\S+)\'', conf).group(1)
+server_id = re.search('server_id=\'(\S+)\'', conf).group(1)
 
 def log(app, logfile):
     logger = logging.getLogger(app)
@@ -39,3 +43,4 @@ def look_up_dict(word):
 
 if __name__ == '__main__':
     print(look_up_dict('jewel'))
+    print(token)
